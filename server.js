@@ -9,14 +9,14 @@ app.use(cors());
 // @desc    wecreate endpoint
 // @access  public 
 app.get("/", (req, res) => {
-    res.json("WeCreate ready!");
+    res.json({msg: "WeCreate ready!"});
 }); 
 
 // @route   GET /test
 // @desc    test api running endpoint
 // @access  public 
 app.get("/test", (req, res) => {
-    res.json("API running");
+    res.json({ msg: "API running" });
 }); 
 
 const PORT = process.env.PORT || 5000; 
