@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WeCreate Gallery</title>
+    <title>Facebook WeCreate - San Francisco</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         img {
             width: 100%;
         }
+
+        h1 {
+            background: #4267b2;
+            letter-spacing: 0.05em;
+            margin-top: 0;
+            padding: 15px;
+            color: white; 
+        }
     </style>
 </head>
+
 <body>
+    <h1 class="text-center display-4 mb-4">
+        <strong>Facebook WeCreate - San Francisco</strong>
+    </h1>
     <div class="container">
         <div class="row">
             <div class="col-md-6 m-auto">
-                <h1 class="text-center display-4 my-4">
-                    WeCreate Gallery
-                </h1>
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                     <div class="custom-file mb-3">
                         <input type="file" name="file" id="file" class="custom-file-input">
@@ -28,24 +38,22 @@
                     <input type="submit" value="Submit" class="btn btn-primary btn-block">
                 </form>
                 <hr>
-                <div>
-                    <% if(files) { %>
-                    <% files.forEach(function(file) { %>
-                    <div class="card card-body mb-3">
-                        <% if(file.isImage) { %>
-                        <img src="image/<%= file.filename %>" alt="">
-                        <% } else { %>
-                        <%= file.filename %>
-                        <% } %>
-                        <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
-                            <button class="btn btn-danger btn-block mt-4">DELETE</button>
-                        </form>
-                    </div>
-                    <% }) %>
+                <% if(files) { %>
+                <% files.forEach(function(file) { %>
+                <div class="card card-body mb-3">
+                    <% if(file.isImage) { %>
+                    <img src="image/<%= file.filename %>" alt="">
                     <% } else { %>
-                    <p>No files to show</p>
+                    <%= file.filename %>
                     <% } %>
+                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                        <button class="btn btn-danger btn-block mt-4">DELETE</button>
+                    </form>
                 </div>
+                <% }) %>
+                <% } else { %>
+                <p>No files to show</p>
+                <% } %>
             </div>
         </div>
     </div>
@@ -60,4 +68,5 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 </body>
+
 </html>
