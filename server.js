@@ -80,7 +80,6 @@ app.get("/", (req, res) => {
 // @route   POST /upload
 // @desc    uploads file to db
 app.post("/upload", upload.single("file"), (req, res) => {
-    // res.json({file: req.file});
     res.redirect("/");
 }); 
 
