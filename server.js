@@ -7,7 +7,7 @@ app.use(cors());
 
 // @route   GET /
 // @desc    wecreate endpoint
-// @access  public 
+@access  public 
 app.get("/", (req, res) => {
     res.json({msg: "WeCreate ready!"});
 }); 
