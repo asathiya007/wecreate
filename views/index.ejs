@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mongo File Uploads</title>
+    <title>WeCreate Gallery</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
@@ -18,32 +18,34 @@
         <div class="row">
             <div class="col-md-6 m-auto">
                 <h1 class="text-center display-4 my-4">
-                    Mongo File Uploads
+                    WeCreate Gallery
                 </h1>
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                     <div class="custom-file mb-3">
                         <input type="file" name="file" id="file" class="custom-file-input">
-                        <label for="file" class="custom-file-label">Choose File</label>
+                        <label for="file" class="custom-file-label">Share your experiences with the world!</label>
                     </div>
                     <input type="submit" value="Submit" class="btn btn-primary btn-block">
                 </form>
                 <hr>
-                <% if(files) { %>
+                <div>
+                    <% if(files) { %>
                     <% files.forEach(function(file) { %>
-                        <div class="card card-body mb-3">
-                            <% if(file.isImage) { %>
-                                <img src="image/<%= file.filename %>" alt="">
-                            <% } else { %>
-                                <%= file.filename %>
-                            <% } %>
-                            <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
-                                <button class="btn btn-danger btn-block mt-4">DELETE</button>
-                            </form>
-                        </div>
+                    <div class="card card-body mb-3">
+                        <% if(file.isImage) { %>
+                        <img src="image/<%= file.filename %>" alt="">
+                        <% } else { %>
+                        <%= file.filename %>
+                        <% } %>
+                        <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                            <button class="btn btn-danger btn-block mt-4">DELETE</button>
+                        </form>
+                    </div>
                     <% }) %>
-                <% } else { %>
+                    <% } else { %>
                     <p>No files to show</p>
-                <% } %>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>
