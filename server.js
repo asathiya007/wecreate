@@ -84,7 +84,7 @@ app.get("/files", (req, res) => {
 }); 
 
 // @route   GET /files/:filename
-// @desc    display all files in JSON 
+// @desc    display a file in JSON
 app.get("/files/:filename", (req, res) => {
     gfs.files.findOne({filename: req.params.filename}, (err, file) => {
         // check if file
@@ -95,6 +95,26 @@ app.get("/files/:filename", (req, res) => {
         // return files
         return res.json(file);
     }); 
+}); 
+
+// @route   GET /image/:filename
+// @desc    display an image 
+app.get("/image/:filename", (req, res) => {
+    gfs.files.findOne({ filename: req.params.filename }, (err, file) => {
+        // check if file
+        if (!file || file.length === 0) {
+            return res.status(400).json({ err: "no file exists" });
+        }
+
+        // check if image 
+        if (file.contentType === "image/jpeg" || file.contentType === "image/png") {
+            // read output to browser 
+            const readStream = gfs.createReadStream(file.filename);
+            readStream.pipe(res);
+        } else {
+            return res.status(404).json({err: "not an image"}); 
+        }
+    });
 }); 
 
 const PORT = process.env.PORT || 5000; 
