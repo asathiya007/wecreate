@@ -59,7 +59,22 @@ app.get("/test", (req, res) => {
 // @route   GET /
 // @desc    loads form
 app.get("/", (req, res) => {
-    res.render("index");
+    // get files 
+    gfs.files.find().toArray((err, files) => {
+        // check if files
+        if (!files || files.length === 0) {
+            res.render("index", {files: false});
+        } else {
+            files.map(file => {
+                if (file.contentType === "image/jpeg" || file.contentType === "image/png") {
+                    file.isImage = true; 
+                } else {
+                    file.isImage = false; 
+                }
+            });
+            res.render("index", { files: files });
+        }
+    })
 }); 
 
 // @route   POST /upload
@@ -80,7 +95,7 @@ app.get("/files", (req, res) => {
 
         // return files
         return res.json(files);
-    })
+    });
 }); 
 
 // @route   GET /files/:filename
@@ -116,6 +131,18 @@ app.get("/image/:filename", (req, res) => {
         }
     });
 }); 
+
+// @route   DELETE /files/:id
+// @desc    delete file 
+app.delete("/files/:id", (req, res) => {
+    gfs.remove({_id: req.params.id, root: "uploads"}, (err, gridStore) => {
+        if (err) {
+            return res.status(404).json({err: err});
+        }
+
+        res.redirect("/");
+    })
+});
 
 const PORT = process.env.PORT || 5000; 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
