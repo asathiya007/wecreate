@@ -1,0 +1,11 @@
+{
+  "name": "wecreate",
+  "version": "1.0.0",
+  "description": "A digital collage map to help Facebook users share their experiences!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Akshay Sathiya, Silas Niewierra, Alison Oentoro, Stephanie Cherubin",
+  "license": "MIT"
+}
