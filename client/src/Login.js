@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.scss';
 import FacebookLoginButton from './FacebookLoginButton';
 
-class App extends Component {
+class Login extends Component {
 
   state = {
     username: null
@@ -26,6 +25,20 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">We Create</h1>
         </header>
+        {/* <div className="area">
+                    <ul className="circles">
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                        <li />
+                    </ul>
+                </div> */}
         <div className="App-intro">
           { !username &&
             <div>
@@ -44,4 +57,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Login;
