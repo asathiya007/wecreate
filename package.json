@@ -1,29 +1,40 @@
 {
-  "name": "wecreate",
-  "version": "1.0.0",
-  "description": "A digital collage map to help Facebook users share their experiences!",
-  "main": "server.js",
+  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "test": "jest --watchAll"
   },
-  "author": "Akshay Sathiya, Silas Niewierra, Alison Oentoro, Stephanie Cherubin",
-  "license": "MIT",
+  "jest": {
+    "preset": "jest-expo"
+  },
   "dependencies": {
-    "concurrently": "^5.0.0",
-    "config": "^3.2.4",
-    "cors": "^2.8.5",
-    "ejs": "^2.7.2",
-    "express": "^4.17.1",
-    "gridfs-stream": "^1.1.1",
-    "method-override": "^3.0.0",
-    "mongoose": "^5.7.11",
-    "multer": "^1.4.2",
-    "multer-gridfs-storage": "^4.0.1",
-    "nodemon": "^1.19.4",
-    "path": "^0.12.7"
-  }
+    "@expo/samples": "~3.0.3",
+    "@expo/vector-icons": "^10.0.3",
+    "@react-navigation/web": "^1.0.0-alpha.9",
+    "axios": "^0.19.0",
+    "expo": "^35.0.0",
+    "expo-asset": "^7.0.0",
+    "expo-camera": "~7.0.0",
+    "expo-constants": "^7.0.0",
+    "expo-facebook": "~7.0.0",
+    "expo-font": "^7.0.0",
+    "expo-web-browser": "^7.0.0",
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-35.0.0.tar.gz",
+    "react-native-camera": "^3.9.0",
+    "react-native-gesture-handler": "~1.3.0",
+    "react-native-maps": "~0.25.0",
+    "react-native-web": "^0.11.7",
+    "react-navigation": "^3.12.0"
+  },
+  "devDependencies": {
+    "babel-preset-expo": "^7.0.0",
+    "jest-expo": "^35.0.0"
+  },
+  "private": true
 }
